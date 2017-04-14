@@ -1,0 +1,124 @@
+#include <cassert>   // Provides assert
+#include "dnode2.h"   // Node template class
+#include <iostream>
+
+namespace main_savitch_8C
+{
+
+	
+    template <class Item>
+    deque<Item>::deque( )
+    {
+        count = 0;
+        front_ptr = NULL;
+		rear_ptr = NULL;
+		capacity = 30;
+    }
+
+    template <class Item>
+    deque<Item>::deque(const deque<Item>& source)
+    // Library facilities used: node2.h
+    {
+	count = source.count;
+	list_copy(source.front_ptr, front_ptr, rear_ptr);
+    }
+
+    template <class Item>
+    deque<Item>::~deque( )
+    {
+        list_clear(front_ptr);
+    }
+
+    template <class Item>
+    void deque<Item>::operator =(const deque<Item>& source)
+    // Library facilities used: node2.h
+    {
+        if (this == &source) // Handle self-assignment
+            return;
+        list_clear(front_ptr);
+        list_copy(source.front_ptr, front_ptr, rear_ptr);
+        count = source.count;
+    }
+
+    template <class Item>
+    Item deque<Item>::get_front( ) const
+    // Library facilities used: cassert
+    {
+        assert(!empty( ));    
+        return front_ptr->data( );
+    }
+    
+    template <class Item>
+    Item deque<Item>::get_rear( ) const
+    // Library facilities used: cassert
+    {
+        assert(!empty( ));    
+        return rear_ptr->data( );
+    }
+    
+    template <class Item>
+    void deque<Item>::pop_front( )
+    // Library facilities used: cassert, node2.h
+    {
+        assert(!empty( ));
+	list_head_remove(front_ptr);
+	--count;
+    }
+
+    template <class Item>
+    void deque<Item>::pop_rear( )
+    // Library facilities used: cassert, node2.h
+    {
+
+		rear_ptr = rear_ptr->get_link_back();
+		list_remove(rear_ptr);
+
+	--count;
+    }
+    template <class Item>
+    void deque<Item>::push_front(const Item& entry)
+    // Library facilities used: node2.h
+    {
+		
+        if (empty( ))
+        {   // Insert first entry.
+            list_head_insert(front_ptr, entry);
+            rear_ptr = front_ptr;
+        }
+        else
+        {   // Insert an entry that is not the first.
+            list_head_insert(front_ptr, entry);
+        }
+        ++count;
+		
+    }
+	template <class Item>
+   void deque<Item>::push_rear(const Item& entry)
+    // Library facilities used: node2.h
+    {
+		
+        if (empty( ))
+        {   // Insert first entry.
+            list_head_insert(front_ptr, entry);
+            rear_ptr = front_ptr;
+        }
+        else
+        {   // Insert an entry that is not the first.
+            list_insert(rear_ptr, entry);
+            rear_ptr = rear_ptr->get_link_fore( );
+        }
+        ++count;
+		
+    }
+		template <class Item>
+	void deque<Item>:: print( ) 
+	{
+		
+		main_savitch_6B::node<Item> *cursor;
+		for(cursor = front_ptr; cursor != NULL; cursor = cursor->get_link_fore())
+			std:: cout << cursor->data( ) << ", ";
+		
+		std:: cout << std::endl;
+	}
+
+}

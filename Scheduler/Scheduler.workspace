@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeLite_Workspace Name="Scheduler" Database="" Version="10.0.0">
+  <Project Name="deque3" Path="../deque3/deque3.project" Active="No"/>
+  <Project Name="scheduler" Path="scheduler/scheduler.project" Active="No"/>
+  <Project Name="heap" Path="heap/heap.project" Active="Yes"/>
+  <Project Name="binarytree" Path="binarytree/binarytree.project" Active="No"/>
+  <BuildMatrix>
+    <WorkspaceConfiguration Name="Debug" Selected="yes">
+      <Environment/>
+      <Project Name="deque3" ConfigName="Debug"/>
+      <Project Name="scheduler" ConfigName="Debug"/>
+      <Project Name="heap" ConfigName="Debug"/>
+      <Project Name="binarytree" ConfigName="Debug"/>
+    </WorkspaceConfiguration>
+    <WorkspaceConfiguration Name="Release" Selected="yes">
+      <Environment/>
+      <Project Name="deque3" ConfigName="Release"/>
+      <Project Name="scheduler" ConfigName="Release"/>
+      <Project Name="heap" ConfigName="Release"/>
+      <Project Name="binarytree" ConfigName="Release"/>
+    </WorkspaceConfiguration>
+  </BuildMatrix>
+</CodeLite_Workspace>

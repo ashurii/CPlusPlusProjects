@@ -1,0 +1,1 @@
+This project is an implementation for a set data structure, using generic data and a linked list implementation.
